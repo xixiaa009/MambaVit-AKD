@@ -35,5 +35,9 @@ data/
 ```
 # Running Experiments
 Experiments can be launched via the following commands.
-* 
+* Train the RFNet model and generate the teacher_model.
+run:
+```python
+python train.py
+```
 
