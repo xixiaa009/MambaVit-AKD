@@ -10,9 +10,10 @@ All our experiments are implemented based on the PyTorch framework with 45GB NVI
 * Process and store the data in NumPy array format ( .npy ) , see [RFNet](https://github.com/dyh127/RFNet/tree/main/data) for more details.
 * The folder structure is assumed to be:
 ```plaintext
-BraTS/
-├── BRATS2021_Training_none_npy/
+data/
+├── BRATS2021_data/
 │   ├── seg
+│  │ ├── seg
 |   ├── vol
 |   ├── text.txt
 |   ├── train.txt
