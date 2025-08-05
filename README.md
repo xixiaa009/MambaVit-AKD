@@ -1,3 +1,2 @@
-# MambaVit-AKD
-# 项目名称
-这是纯文本，不会显示为标题。
+# MambaVit-AKD:Mamba-Vision Transformer with Attention Knowledge Distillation for Missing-modality Brain Tumor Segmentation
+This repository is the official PyTorch implementation of our work: Mamba-Vision Transformer with Attention Knowledge Distillation for Missing-modality Brain Tumor Segmentation
