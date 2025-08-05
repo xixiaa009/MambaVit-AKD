@@ -35,9 +35,13 @@ data/
 ```
 # Running Experiments
 Experiments can be launched via the following commands.
-* Train the RFNet model and generate the teacher_model.
-run:
+* Train the RFNet model and generate the teacher_model(Use complete modalities) :
 ```python
 python train.py
 ```
+* Using the obtained teacher model and all modalities with designed random masking, we commence formal training. For the BRATS2020 dataset, it is split into 219:50:100 (train:val:test) and trained for 1,000 epochs. For the BRATS2021 dataset, it is split into 1000:125:126 and trained for 200 epochs. The learning rate is set to 1e-5 for both.
+```python
+python trainer.py
+```
+
 
