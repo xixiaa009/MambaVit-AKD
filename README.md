@@ -9,19 +9,15 @@ All our experiments are implemented based on the PyTorch framework with 45GB NVI
 * Download the preprocessed datasets BraTS2020 and BraTS2021.
 * Process and store the data in NumPy array format ( .npy ) , see [RFNet](https://github.com/dyh127/RFNet/tree/main/data) for more details.
 * The folder structure is assumed to be:
-M2FTrans/
-└── BraTS
-    ├── BRATS2018_Training_none_npy
-    │   ├── seg/          # 分割标签
-    │   ├── vol/          # 体积数据
-    │   └── ...
-    ├── BRATS2021_Training_none_npy
-    │   ├── seg/
-    │   ├── vol/
-    │   ├── train.txt     # 训练集列表
-    │   ├── val.txt       # 验证集列表
-    │   └── test.txt      # 测试集列表
-    └── ...
-
+```plaintext
+项目名/
+├── 文件夹1/
+│   ├── 文件1.ext
+│   └── 子文件夹/
+├── 文件夹2/
+│   ├── 文件2.ext
+│   └── ...
+└── README.md
+```
 
 
