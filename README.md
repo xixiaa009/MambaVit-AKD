@@ -11,10 +11,17 @@ All our experiments are implemented based on the PyTorch framework with 45GB NVI
 * The folder structure is assumed to be:
 ```plaintext
 data/
-├── BRATS2021_data/
+├── BRATS2020_data/
 │   ├── seg
-│  │ ├── seg
+│   │   ├── BraTS20_Training_001_seg.npy
+│   │   ├── BraTS20_Training_002_seg.npy
+│   │   ├── BraTS20_Training_003_seg.npy
+│   │   ├──......
 |   ├── vol
+│   │   ├──BraTS20_Training_001_vol.npy
+│   │   ├──BraTS20_Training_002_vol.npy
+│   │   ├──BraTS20_Training_003_vol.npy
+│   │   ├──......
 |   ├── text.txt
 |   ├── train.txt
 │   └── vol.txt /
