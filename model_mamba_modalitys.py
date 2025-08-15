@@ -3,9 +3,9 @@ import torch.nn.functional as F
 import torch
 import math
 from typing import Tuple, Union
-from layers0 import normalization
-from layers0 import general_conv3d
-from layers0 import prm_generator_laststage, prm_generator, region_aware_modal_fusion
+from layers import normalization
+from layers import general_conv3d
+from layers import prm_generator_laststage, prm_generator, region_aware_modal_fusion
 from monai.networks.nets import ViT
 from monai.networks.blocks import UnetrBasicBlock, UnetrPrUpBlock, UnetrUpBlock
 from monai.networks.blocks.dynunet_block import UnetOutBlock
@@ -333,4 +333,5 @@ class Model(nn.Module):
             t2_pred = self.decoder_sep(t2_x1, t2_x2, t2_x3, t2_x4)
             return feature,logits,fuse_pred, (flair_pred, t1ce_pred, t1_pred, t2_pred), prm_preds
         return feature,logits,fuse_pred
+
 
