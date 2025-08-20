@@ -1,6 +1,6 @@
 # MambaVit-AKD:Mamba-Vision Transformer with Attention Knowledge Distillation for Missing-modality Brain Tumor Segmentation
 This repository is the official PyTorch implementation of our work : Mamba-Vision Transformer with Attention Knowledge Distillation for Missing-modality Brain Tumor Segmentation .
-# setup
+# Setup
 ## Environment
 All our experiments are implemented based on the PyTorch framework with 45GB NVIDIA A40 GPU , and we recommend installing the following package versions :
 * Python 3.10.9
@@ -51,7 +51,7 @@ python trainer.py
 Comparison of segmentation results on the BraTS2020 dataset (green indicates WT,blue indicates TC, and red indicates ET). From top to bottom, the
 number of available modalities increases progressively.
 
-<img width="783" height="343" alt="image" src="https://github.com/user-attachments/assets/1abbbbcf-29f0-4b8c-9444-d164952b944b" />
+<img width="1000 height="455" alt="image" src="https://github.com/user-attachments/assets/f20e83fc-845e-4f14-90dc-e91720729149" />
 
 Comparison with state-of-the-art methods including RobustSeg, mmFormer, and M2FTrans on the BraTS2020 dataset. Complete, Core, and Enhancing represent the
 Dice scores for whole tumor, tumor core, and enhancing tumor, respectively.
