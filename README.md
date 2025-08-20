@@ -46,5 +46,7 @@ python train.py
 python trainer.py
 ```
 # Results
-
+<img width="939" height="749" alt="image" src="https://github.com/user-attachments/assets/47a7f225-645b-4ae0-a737-1bac634abc87" />
+Comparison of segmentation results on the BraTS2020 dataset (green indicates WT,blue indicates TC, and red indicates ET). From top to bottom, the
+number of available modalities increases progressively.
 
