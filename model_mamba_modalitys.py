@@ -13,6 +13,41 @@ from segMamba import SegMamba,initialize_model
 
 basic_dims = 16
 class Encoder(nn.Module):
+    def __init__(self):
+        super(Encoder, self).__init__()
+
+        self.e1_c1 = general_conv3d(1, basic_dims, pad_type='reflect')
+        self.e1_c2 = general_conv3d(basic_dims, basic_dims, pad_type='reflect')
+        self.e1_c3 = general_conv3d(basic_dims, basic_dims, pad_type='reflect')
+
+        self.e2_c1 = general_conv3d(basic_dims, basic_dims * 2, stride=2, pad_type='reflect')
+        self.e2_c2 = general_conv3d(basic_dims * 2, basic_dims * 2, pad_type='reflect')
+        self.e2_c3 = general_conv3d(basic_dims * 2, basic_dims * 2, pad_type='reflect')
+
+        self.e3_c1 = general_conv3d(basic_dims * 2, basic_dims * 4, stride=2, pad_type='reflect')
+        self.e3_c2 = general_conv3d(basic_dims * 4, basic_dims * 4, pad_type='reflect')
+        self.e3_c3 = general_conv3d(basic_dims * 4, basic_dims * 4, pad_type='reflect')
+
+        self.e4_c1 = general_conv3d(basic_dims * 4, basic_dims * 8, stride=2, pad_type='reflect')
+        self.e4_c2 = general_conv3d(basic_dims * 8, basic_dims * 8, pad_type='reflect')
+        self.e4_c3 = general_conv3d(basic_dims * 8, basic_dims * 8, pad_type='reflect')
+
+    def forward(self, x):
+        x1 = self.e1_c1(x)
+        x1 = x1 + self.e1_c3(self.e1_c2(x1))
+
+        x2 = self.e2_c1(x1)
+        x2 = x2 + self.e2_c3(self.e2_c2(x2))
+
+        x3 = self.e3_c1(x2)
+        x3 = x3 + self.e3_c3(self.e3_c2(x3))
+
+        x4 = self.e4_c1(x3)
+        x4 = x4 + self.e4_c3(self.e4_c2(x4))
+
+        return x1, x2, x3, x4
+
+class Encoder0(nn.Module):
     def __init__(
             self,
             in_channels: int,
@@ -262,21 +297,25 @@ class Model(nn.Module):
         )
         self.hidden_size = hidden_size
         self.classification = False
-        self.flair_encoder = Encoder(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
+        self.flair_encoder0 = Encoder0(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
                                      mlp_dim=mlp_dim, num_heads=num_heads, pos_embed=pos_embed,
                                      dropout_rate=dropout_rate, )
-        self.t1ce_encoder = Encoder(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
+        self.t1ce_encoder0 = Encoder0(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
                                     mlp_dim=mlp_dim, num_heads=num_heads, pos_embed=pos_embed,
                                     dropout_rate=dropout_rate, )
-        self.t1_encoder = Encoder(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
+        self.t1_encoder0 = Encoder0(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
                                   mlp_dim=mlp_dim, num_heads=num_heads, pos_embed=pos_embed,
                                   dropout_rate=dropout_rate, )
-        self.t2_encoder = Encoder(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
+        self.t2_encoder0 = Encoder0(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
                                   mlp_dim=mlp_dim, num_heads=num_heads, pos_embed=pos_embed,
                                   dropout_rate=dropout_rate, )
-        self.m_encoder = Encoder(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
+        self.m_encoder0 = Encoder0(in_channels=in_channels, img_size=img_size, hidden_size=hidden_size,
                                   mlp_dim=mlp_dim, num_heads=num_heads, pos_embed=pos_embed,
                                   dropout_rate=dropout_rate, )
+        self.flair_encoder = Encoder(  )
+        self.t1ce_encoder = Encoder(  )
+        self.t1_encoder = Encoder(  )
+        self.t2_encoder = Encoder(  )
 
         # # self.m_encoder = initialize_model()
         self.decoder_fuse = Decoder_fuse(num_cls=num_cls)
@@ -333,5 +372,6 @@ class Model(nn.Module):
             t2_pred = self.decoder_sep(t2_x1, t2_x2, t2_x3, t2_x4)
             return feature,logits,fuse_pred, (flair_pred, t1ce_pred, t1_pred, t2_pred), prm_preds
         return feature,logits,fuse_pred
+
 
 
