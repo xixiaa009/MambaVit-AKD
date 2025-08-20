@@ -51,7 +51,7 @@ python trainer.py
 Comparison of segmentation results on the BraTS2020 dataset (green indicates WT,blue indicates TC, and red indicates ET). From top to bottom, the
 number of available modalities increases progressively.
 
-<img width="1000 height="455" alt="image" src="https://github.com/user-attachments/assets/f20e83fc-845e-4f14-90dc-e91720729149" />
+<img width="1000" height="455" alt="image" src="https://github.com/user-attachments/assets/f20e83fc-845e-4f14-90dc-e91720729149" />
 
 Comparison with state-of-the-art methods including RobustSeg, mmFormer, and M2FTrans on the BraTS2020 dataset. Complete, Core, and Enhancing represent the
 Dice scores for whole tumor, tumor core, and enhancing tumor, respectively.
